@@ -112,6 +112,9 @@ function min_version($version, $maria_db = "", $connection2 = null) {
 * @return string
 */
 function charset($connection) {
+    if ($_COOKIE['charset_overridden']) {
+        return $_COOKIE['charset'];
+    }
 	return (min_version("5.5.3", 0, $connection) ? "utf8mb4" : "utf8"); // SHOW CHARSET would require an extra query
 }
 
